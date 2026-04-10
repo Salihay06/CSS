@@ -1,0 +1,74 @@
+* **Harici ($External$):** En profesyonelidir. Ayrı bir `.css` dosyasında yazılır ve HTML'e bağlanır.
+    [cite_start]`<link rel="stylesheet" href="stilim.css">`[cite: 108, 112].
+
+---
+
+### 3. Seçici Türleri Örneği
+Kimleri "hedef aldığımızı" belirlemek için 3 ana yöntem vardır:
+
+```html
+<p>Ben genel bir paragrafım.</p>
+<div class="mavi-kutu">Ben bir sınıfım (class).</div>
+<div id="ozel-baslik">Ben tek bir taneyim (ID).</div>
+```
+
+**CSS Karşılıkları:**
+* **Öğeye Göre:** `p { color: green; [cite_start]}` → Sayfadaki **tüm** paragrafları yeşil yapar[cite: 288, 294].
+* **Sınıfa Göre:** `.mavi-kutu { color: blue; }` → Başına **nokta** konur. [cite_start]`class="mavi-kutu"` yazan her şeyi mavi yapar[cite: 325, 331].
+* **ID'ye Göre:** `#ozel-baslik { font-weight: bold; }` → Başına **diyez (#)** konur. [cite_start]Sadece o özel ID'ye sahip olanı etkiler[cite: 342, 347].
+
+---
+
+### 4. Kutu Modeli ($Box Model$) Örneği
+Her öğeyi bir "hediye paketi" gibi düşün.
+
+```css
+.kutu {
+  width: 200px;           /* İçerik genişliği */
+  padding: 20px;         /* Paket ile içindeki eşya arasındaki boşluk (İç boşluk) */
+  border: 5px solid black; /* Paketin kartonu (Kenarlık) */
+  margin: 30px;          /* Bu paketin diğer paketlerle arasındaki mesafe (Dış boşluk) */
+}
+```
+
+
+**Hesaplama Hatası:** Eğer bu kodu yazarsan, kutu ekranda **200px** değil; [cite_start]$200 + 20(sol) + 20(sağ) + 5(sol) + 5(sağ) = \mathbf{250px}$ yer kaplar[cite: 462, 465]. [cite_start]Bunu engellemek için her zaman `box-sizing: border-box;` kullanmalısın[cite: 491, 498].
+
+---
+
+### 5. Flexbox (Düzenleme) Örneği
+Eskiden kutuları yan yana dizmek çok zordu. Flexbox ile bu çok kolaylaştı.
+
+**Senaryo:** 3 tane kutuyu yan yana dizmek ve aralarına eşit boşluk bırakmak istiyoruz.
+
+**CSS:**
+```css
+.kapsayici {
+  display: flex;            /* Flexbox'ı başlatır */
+  flex-direction: row;      /* Kutuları yan yana dizer */
+  justify-content: space-around; /* Aralarına eşit boşluk dağıtır */
+  align-items: center;      /* Dikeyde ortalar */
+}
+```
+
+
+* [cite_start]`justify-content: center;` dersen hepsi ortada toplanır[cite: 646, 647].
+* [cite_start]`flex-direction: column;` dersen hepsi alt alta dizilir[cite: 638, 639].
+
+---
+
+### 6. Duyarlı Tasarım ($Responsive$) Örneği
+Telefon ile bilgisayar ekranı arasındaki farkı yönetmek için kullanılır.
+
+**Senaryo:** Bilgisayarda arka plan beyaz, telefonda (768px'den küçükse) açık mavi olsun.
+
+```css
+/* Genel Ayar (Bilgisayar için) */
+body { background-color: white; }
+
+/* Telefon Ayarı (Media Query) */
+@media (max-width: 768px) {
+  body {
+    background-color: lightblue; /* Ekran küçülünce devreye girer */
+  }
+}
