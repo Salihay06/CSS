@@ -1,74 +1,89 @@
-* **Harici ($External$):** En profesyonelidir. Ayrı bir `.css` dosyasında yazılır ve HTML'e bağlanır.
-    [cite_start]`<link rel="stylesheet" href="stilim.css">`[cite: 108, 112].
+<p style="color:red"> Merhaba</p>
 
----
+<style>
+p{color : red;}
+</style>
 
-### 3. Seçici Türleri Örneği
-Kimleri "hedef aldığımızı" belirlemek için 3 ana yöntem vardır:
+<link rel="stylesheet" href="style.css">
 
-```html
-<p>Ben genel bir paragrafım.</p>
-<div class="mavi-kutu">Ben bir sınıfım (class).</div>
-<div id="ozel-baslik">Ben tek bir taneyim (ID).</div>
-```
+// Css dosyasının içi
+h1{color:blue;
+font-size:30px;}
 
-**CSS Karşılıkları:**
-* **Öğeye Göre:** `p { color: green; [cite_start]}` → Sayfadaki **tüm** paragrafları yeşil yapar[cite: 288, 294].
-* **Sınıfa Göre:** `.mavi-kutu { color: blue; }` → Başına **nokta** konur. [cite_start]`class="mavi-kutu"` yazan her şeyi mavi yapar[cite: 325, 331].
-* **ID'ye Göre:** `#ozel-baslik { font-weight: bold; }` → Başına **diyez (#)** konur. [cite_start]Sadece o özel ID'ye sahip olanı etkiler[cite: 342, 347].
 
----
-
-### 4. Kutu Modeli ($Box Model$) Örneği
-Her öğeyi bir "hediye paketi" gibi düşün.
-
-```css
-.kutu {
-  width: 200px;           /* İçerik genişliği */
-  padding: 20px;         /* Paket ile içindeki eşya arasındaki boşluk (İç boşluk) */
-  border: 5px solid black; /* Paketin kartonu (Kenarlık) */
-  margin: 30px;          /* Bu paketin diğer paketlerle arasındaki mesafe (Dış boşluk) */
+p{ 
+font-weight: bold; 
 }
-```
 
-
-**Hesaplama Hatası:** Eğer bu kodu yazarsan, kutu ekranda **200px** değil; [cite_start]$200 + 20(sol) + 20(sağ) + 5(sol) + 5(sağ) = \mathbf{250px}$ yer kaplar[cite: 462, 465]. [cite_start]Bunu engellemek için her zaman `box-sizing: border-box;` kullanmalısın[cite: 491, 498].
-
----
-
-### 5. Flexbox (Düzenleme) Örneği
-Eskiden kutuları yan yana dizmek çok zordu. Flexbox ile bu çok kolaylaştı.
-
-**Senaryo:** 3 tane kutuyu yan yana dizmek ve aralarına eşit boşluk bırakmak istiyoruz.
-
-**CSS:**
-```css
-.kapsayici {
-  display: flex;            /* Flexbox'ı başlatır */
-  flex-direction: row;      /* Kutuları yan yana dizer */
-  justify-content: space-around; /* Aralarına eşit boşluk dağıtır */
-  align-items: center;      /* Dikeyde ortalar */
+p{
+text-align: center;
 }
-```
 
+display:block;
+display:inline;
+display:inline-block;
 
-* [cite_start]`justify-content: center;` dersen hepsi ortada toplanır[cite: 646, 647].
-* [cite_start]`flex-direction: column;` dersen hepsi alt alta dizilir[cite: 638, 639].
-
----
-
-### 6. Duyarlı Tasarım ($Responsive$) Örneği
-Telefon ile bilgisayar ekranı arasındaki farkı yönetmek için kullanılır.
-
-**Senaryo:** Bilgisayarda arka plan beyaz, telefonda (768px'den küçükse) açık mavi olsun.
-
-```css
-/* Genel Ayar (Bilgisayar için) */
-body { background-color: white; }
-
-/* Telefon Ayarı (Media Query) */
-@media (max-width: 768px) {
-  body {
-    background-color: lightblue; /* Ekran küçülünce devreye girer */
-  }
+div{ 
+opacity:0.5;
 }
+
+div{
+height:100pc;
+overflow:auto;
+}
+
+button{
+cursor:pointer;
+}
+
+
+
+
+<button class="ana-buton">Giriş Yap</button>
+<p class="ana-buton">Bu bir metin ama buton gibi görünecek!</p>
+<button class="ana-buton">Kayıt Ol</button>
+
+
+/* "ana-buton" sınıfına sahip TÜM öğeleri etkiler */
+.ana-buton {
+  background-color: #3498db;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+
+
+
+<div id="ana-header">
+    <h1>Web Siteme Hoş Geldiniz</h1>
+</div>
+
+<div id="ana-header">...</div>
+
+
+/* Sadece "ana-header" ID'sine sahip öğeyi etkiler */
+#ana-header {
+  background-color: black;
+  color: white;
+  padding: 50px;
+  text-align: center;
+}
+
+
+
+
+.card{display:inline-block; width:200px; margin:10px; vertical-align:top;}
+
+.card{float:left; width:200px; margin:100px;}
+.container{overflow:auto;}
+
+flex-direction: row;
+flex-direction;column;
+
+
+justify-content: center;
+justify-content: space-between;
+justify-content: space-around;
+
+flex-wrap: wrap;
